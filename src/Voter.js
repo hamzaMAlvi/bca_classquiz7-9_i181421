@@ -30,11 +30,11 @@ class Voter extends Component {
     handleChange(event) {
         this.setState({ selectedChoice: event.target.value });
     }
-    vote() {
+    async vote() {
         if (this.state.selectedChoice === '')
             this.setState({ canVoteMessage: 'Please Select a Choice' });
         else {
-            castVote(this.props.address, this.state.selectedChoice);
+            const tmp = await castVote(this.props.address, this.state.selectedChoice);
             this.setState({ selectedChoice: '', canVote: true });
             this.setState({ canVoteMessage: 'Your Vote has been casted. You can not Vote more than once' });
         }

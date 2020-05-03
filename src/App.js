@@ -73,8 +73,9 @@ export async function canCastVote(address) {
   const voteState = await contract.methods.voted(address).call();
   return voteState;
 }
-export function castVote(_voter, _choice) {
-  getContract().methods.vote(_choice).send({ from: _voter });
+export async function castVote(_voter, _choice) {
+  await getContract().methods.vote(_choice).send({ from: _voter });
+  return '';
 }
 export async function getWinner() {
   const contract = getContract();
