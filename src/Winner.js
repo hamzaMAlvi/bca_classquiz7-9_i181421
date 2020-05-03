@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import ReactDOM from "react-dom";
 import { Header } from './App'
 import './App.css'
-import { Box } from "@material-ui/core";
+import Login from "./Login";
+import { Box, Button } from "@material-ui/core";
 
 class Winner extends Component {
     constructor(props) {
@@ -18,6 +20,9 @@ class Winner extends Component {
             };
         }
     }
+    logout = () => {
+        ReactDOM.render(<Login />, document.getElementById("root"));
+    };
     render() {
         return (
             <div>
@@ -26,6 +31,11 @@ class Winner extends Component {
                     <h3>{this.state.heading}</h3>
                     <br />
                     <text>{this.state.value}</text>
+                    <br />
+                    <br />
+                    <Button variant="outlined" color='primary' onClick={this.logout}>
+                        Return
+                    </Button>
                 </Box>
             </div>
         );
