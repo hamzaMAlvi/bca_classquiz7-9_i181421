@@ -46,7 +46,7 @@ contract Election {
     }
     modifier choiceExists(address _choice) {
         bool exists = false;
-        for (uint256 i = 0; i < choices.length; i++) {
+        for (uint256 i = 0; i < choicesCount(); i++) {
             if (choices[i] == _choice) {
                 exists = true;
                 break;
@@ -57,7 +57,7 @@ contract Election {
     }
     modifier voterExists() {
         bool exists = false;
-        for (uint256 i = 0; i < voters.length; i++) {
+        for (uint256 i = 0; i < votersCount(); i++) {
             if (voters[i] == msg.sender) {
                 exists = true;
                 break;
@@ -79,9 +79,17 @@ contract Election {
         choiceVotes[_choice] = 0;
     }
 
+    function choicesCount() public view returns (uint256) {
+        return choices.length;
+    }
+
     function addVoter(address _voter) public restricted {
         voters.push(_voter);
         voted[_voter] = false;
+    }
+
+    function votersCount() public view returns (uint256) {
+        return voters.length;
     }
 
     function vote(address _choice)
@@ -96,7 +104,7 @@ contract Election {
         choiceVotes[_choice] += 1;
         uint256 maxVotes = 0;
         if (votesCasted >= votingThreshold) {
-            for (uint256 i = 0; i < choices.length; i++) {
+            for (uint256 i = 0; i < choicesCount(); i++) {
                 if (choiceVotes[choices[i]] > maxVotes) {
                     winner = choices[i];
                 }
