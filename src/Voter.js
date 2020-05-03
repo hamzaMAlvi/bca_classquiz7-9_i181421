@@ -34,7 +34,7 @@ class Voter extends Component {
         if (this.state.selectedChoice === '')
             this.setState({ canVoteMessage: 'Please Select a Choice' });
         else {
-            const tmp = await castVote(this.props.address, this.state.selectedChoice);
+            await castVote(this.props.address, this.state.selectedChoice);
             this.setState({ selectedChoice: '', canVote: true });
             this.setState({ canVoteMessage: 'Your Vote has been casted. You can not Vote more than once' });
         }
@@ -49,17 +49,17 @@ class Voter extends Component {
             <div>
                 <Header />
                 <LogoutButton />
-                <Box className='apptitle' m={2}>
+                <Box className='apptitle' m={4}>
+                    <b>Your Address:</b> <br /> {this.props.address}
+                </Box>
+                <Box className='apptitle' m={4}>
                     <TextField variant='outlined' label='Select a Choice'
                         value={this.state.selectedChoice} onChange={this.handleChange} size='small'
                         style={{ width: 600 }} select
                     >
                         {listChoices}
                     </TextField>
-                    <br />
-                    <label>{this.state.canVoteMessage}</label>
-                    <br />
-                    <br />
+                    <br /> <label>{this.state.canVoteMessage}</label> <br /> <br />
                     <Button variant="outlined" color='primary' onClick={this.vote} disabled={this.state.canVote}>Vote</Button>
                 </Box>
             </div>

@@ -60,6 +60,9 @@ class Owner extends Component {
             <div>
                 <Header />
                 <LogoutButton />
+                <Box className='apptitle' m={4}>
+                    <b>Your Address:</b> <br /> {this.props.address}
+                </Box>
                 <Box m={10} />
                 <InputOption text='Add a Choice' handleclick={this.addChoice} warn={this.state.choiceWarn} address={this.state.choiceAddress} edited={this.handleChoiceChange} />
                 <Box m={10} />
