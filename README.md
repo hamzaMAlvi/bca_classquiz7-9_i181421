@@ -1,7 +1,7 @@
 # BCA_ClassQuiz-07/08/09
 Solution to the Class Quiz 07/08/09 in the course Blockchain and its Application offered in Spring 2020 at FAST-NU.
 
-This application require blockchain to operate.
+This application is written using React and require ethereum blockchain to operate.
 
 To operate at a local machine, setup Ganache and Truffle.
 
