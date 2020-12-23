@@ -5,9 +5,8 @@ This application require blockchain to operate.
 
 To operate at a local machine, setup Ganache and Truffle.
 
-The smart contracts for blockchain written in solidity are present in folder truffle/contracts.
+The smart contracts for blockchain written in solidity are present in folder truffle/contracts. Deploy these contracts on local blockchain provided by ganache using truffle before running the application.
 
-Deploy these contracts on local blockchain provided by ganache using truffle before running the application.
 
 The statement of the task is given below:
 
